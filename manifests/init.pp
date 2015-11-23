@@ -15,15 +15,15 @@ class pritunl (
   $download_uri = "https://github.com/pritunl/pritunl-client-electron/releases/download/${version}/Pritunl.pkg.zip"
 
   exec { "download pritunl-${version}":
-    command => "curl -s -L ${download_uri} -o /tmp/Pritunl-${version}.pkg.zip"
+    command => "curl -s -L ${download_uri} -o /tmp/Pritunl.pkg.zip"
   } ->
   exec { "unzip pritunl-${version}":
-    command => "unzip -o /tmp/Pritunl-${version}.pkg.zip -d /tmp/Pritunl-${version}.pkg"
+    command => "unzip -o /tmp/Pritunl.pkg.zip -d /tmp/Pritunl.pkg"
   } ->
   package { "pritunl-${version}":
     ensure          => $ensure,
     provider        => 'pkgdmg',
-    source          => "/tmp/Pritunl-${version}.pkg",
+    source          => "/tmp/Pritunl.pkg",
     install_options => [
       '--appdir=/Applications',
       "--binarydir=${boxen::config::bindir}"
