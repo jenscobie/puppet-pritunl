@@ -18,12 +18,12 @@ class pritunl (
     command => "curl -s -L ${download_uri} -o /tmp/Pritunl.zip"
   } ->
   exec { "unzip pritunl-${version}":
-    command => "unzip -q -o /tmp/Pritunl.zip -d /tmp/"
+    command => 'unzip -q -o /tmp/Pritunl.zip -d /tmp/'
   } ->
   package { "pritunl-${version}":
     ensure          => $ensure,
     provider        => 'pkgdmg',
-    source          => "/tmp/Pritunl.pkg",
+    source          => '/tmp/Pritunl.pkg',
     install_options => [
       '--appdir=/Applications',
       "--binarydir=${boxen::config::bindir}"
