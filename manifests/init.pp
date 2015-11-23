@@ -15,10 +15,10 @@ class pritunl (
   $download_uri = "https://github.com/pritunl/pritunl-client-electron/releases/download/${version}/Pritunl.pkg.zip"
 
   exec { "download pritunl-${version}":
-    command => "curl -s -L ${download_uri} -o /tmp/Pritunl.pkg.zip"
+    command => "curl -s -L ${download_uri} -o /tmp/Pritunl.zip"
   } ->
   exec { "unzip pritunl-${version}":
-    command => "unzip -o /tmp/Pritunl.pkg.zip -d /tmp/Pritunl.pkg"
+    command => "unzip -q -o /tmp/Pritunl.zip -d /tmp/"
   } ->
   package { "pritunl-${version}":
     ensure          => $ensure,
