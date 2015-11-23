@@ -9,7 +9,7 @@ describe 'pritunl' do
     it do
       should contain_package('pritunl-0.10.14').with({
         :ensure   => 'present',
-        :source   => 'https://github.com/pritunl/pritunl-client-electron/releases/download/0.10.14/Pritunl.pkg.zip',
+        :source   => '/tmp/Pritunl-0.10.14.pkg',
         :provider => 'pkgdmg',
         :install_options => ['--appdir=/Applications', '--binarydir=/test/boxen/bin'],
       })
